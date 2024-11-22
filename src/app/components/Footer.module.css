@@ -1,0 +1,44 @@
+.footer {
+    background-color: #333;
+    color: white;
+    padding: 1rem 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: space-around;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .column {
+    flex: 1;
+    padding: 0 1rem;
+  }
+  
+  .column h4 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .column p,
+  .column a {
+    font-size: 0.9rem;
+    margin: 0.3rem 0;
+    color: white;
+    text-decoration: none;
+  }
+  
+  .column a:hover {
+    color: #ff6f61;
+  }
+  
+  .footerBottom {
+    margin-top: 1rem;
+    font-size: 0.8rem;
+  }
+  

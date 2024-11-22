@@ -1,95 +1,54 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client';
 
-export default function Home() {
+import React, { useState } from 'react';
+import ContactForm from './components/ContactForm'; // Ajuste o caminho conforme necessário
+import Testimonials from './components/Testimonials'; // Ajuste o caminho conforme necessário
+import Footer from './components/Footer'; // Ajuste o caminho conforme necessário
+
+const Page = () => {
+  const [currentPage, setCurrentPage] = useState<'contact' | 'testimonials'>('contact');
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <div>
+      <header style={{ textAlign: 'center', marginBottom: '2rem' }}>
+        <h1>{currentPage === 'contact' ? 'Fale Conosco' : 'Depoimentos'}</h1>
+        <div>
+          <button
+            onClick={() => setCurrentPage('contact')}
+            style={{
+              margin: '0 0.5rem',
+              padding: '0.5rem 1rem',
+              border: '1px solid #333',
+              background: currentPage === 'contact' ? '#333' : '#fff',
+              color: currentPage === 'contact' ? '#fff' : '#333',
+              cursor: 'pointer',
+            }}
           >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
+            Contato
+          </button>
+          <button
+            onClick={() => setCurrentPage('testimonials')}
+            style={{
+              margin: '0 0.5rem',
+              padding: '0.5rem 1rem',
+              border: '1px solid #333',
+              background: currentPage === 'testimonials' ? '#333' : '#fff',
+              color: currentPage === 'testimonials' ? '#fff' : '#333',
+              cursor: 'pointer',
+            }}
           >
-            Read our docs
-          </a>
+            Depoimentos
+          </button>
         </div>
+      </header>
+
+      <main>
+        {currentPage === 'contact' ? <ContactForm /> : <Testimonials />}
       </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+      <Footer />
     </div>
   );
-}
+};
+
+export default Page;
